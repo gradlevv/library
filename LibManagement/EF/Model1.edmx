@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LibraryModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="LibraryModelStoreContainer">
+          <EntitySet Name="tbl_Books" EntityType="LibraryModel.Store.tbl_Books" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_Borrow" EntityType="LibraryModel.Store.tbl_Borrow" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_Login" EntityType="LibraryModel.Store.tbl_Login" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_Question" EntityType="LibraryModel.Store.tbl_Question" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_Register" EntityType="LibraryModel.Store.tbl_Register" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_Type" EntityType="LibraryModel.Store.tbl_Type" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_User" EntityType="LibraryModel.Store.tbl_User" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_tbl_Books_tbl_Type" Association="LibraryModel.Store.FK_tbl_Books_tbl_Type">
+            <End Role="tbl_Type" EntitySet="tbl_Type" />
+            <End Role="tbl_Books" EntitySet="tbl_Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Borrow_tbl_Books" Association="LibraryModel.Store.FK_tbl_Borrow_tbl_Books">
+            <End Role="tbl_Books" EntitySet="tbl_Books" />
+            <End Role="tbl_Borrow" EntitySet="tbl_Borrow" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Borrow_tbl_User" Association="LibraryModel.Store.FK_tbl_Borrow_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_Borrow" EntitySet="tbl_Borrow" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tbl_Books">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Bookname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Writer" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_Borrow">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BookId" Type="int" />
+          <Property Name="BorrowerId" Type="int" />
+          <Property Name="BorrowDate" Type="nvarchar" MaxLength="20" />
+          <Property Name="ReturnDate" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tbl_Login">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="QuestionId" Type="int" />
+          <Property Name="Answer" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_Question">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Question" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tbl_Register">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Reg" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_Type">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tell" Type="nvarchar" MaxLength="11" />
+          <Property Name="Pic" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="FK_tbl_Books_tbl_Type">
+          <End Role="tbl_Type" Type="LibraryModel.Store.tbl_Type" Multiplicity="0..1" />
+          <End Role="tbl_Books" Type="LibraryModel.Store.tbl_Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Type">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Books">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Borrow_tbl_Books">
+          <End Role="tbl_Books" Type="LibraryModel.Store.tbl_Books" Multiplicity="0..1" />
+          <End Role="tbl_Borrow" Type="LibraryModel.Store.tbl_Borrow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Books">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Borrow">
+              <PropertyRef Name="BookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Borrow_tbl_User">
+          <End Role="tbl_User" Type="LibraryModel.Store.tbl_User" Multiplicity="0..1" />
+          <End Role="tbl_Borrow" Type="LibraryModel.Store.tbl_Borrow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Borrow">
+              <PropertyRef Name="BorrowerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LibraryModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="LibraryEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_Books" EntityType="LibraryModel.tbl_Books" />
+          <EntitySet Name="tbl_Borrow" EntityType="LibraryModel.tbl_Borrow" />
+          <EntitySet Name="tbl_Login" EntityType="LibraryModel.tbl_Login" />
+          <EntitySet Name="tbl_Question" EntityType="LibraryModel.tbl_Question" />
+          <EntitySet Name="tbl_Register" EntityType="LibraryModel.tbl_Register" />
+          <EntitySet Name="tbl_Type" EntityType="LibraryModel.tbl_Type" />
+          <EntitySet Name="tbl_User" EntityType="LibraryModel.tbl_User" />
+          <AssociationSet Name="FK_tbl_Books_tbl_Type" Association="LibraryModel.FK_tbl_Books_tbl_Type">
+            <End Role="tbl_Type" EntitySet="tbl_Type" />
+            <End Role="tbl_Books" EntitySet="tbl_Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Borrow_tbl_Books" Association="LibraryModel.FK_tbl_Borrow_tbl_Books">
+            <End Role="tbl_Books" EntitySet="tbl_Books" />
+            <End Role="tbl_Borrow" EntitySet="tbl_Borrow" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Borrow_tbl_User" Association="LibraryModel.FK_tbl_Borrow_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_Borrow" EntitySet="tbl_Borrow" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tbl_Books">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Bookname" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Writer" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Type" Type="Int32" />
+          <NavigationProperty Name="tbl_Type" Relationship="LibraryModel.FK_tbl_Books_tbl_Type" FromRole="tbl_Books" ToRole="tbl_Type" />
+          <NavigationProperty Name="tbl_Borrow" Relationship="LibraryModel.FK_tbl_Borrow_tbl_Books" FromRole="tbl_Books" ToRole="tbl_Borrow" />
+        </EntityType>
+        <EntityType Name="tbl_Borrow">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="BookId" Type="Int32" />
+          <Property Name="BorrowerId" Type="Int32" />
+          <Property Name="BorrowDate" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="ReturnDate" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="tbl_Books" Relationship="LibraryModel.FK_tbl_Borrow_tbl_Books" FromRole="tbl_Borrow" ToRole="tbl_Books" />
+          <NavigationProperty Name="tbl_User" Relationship="LibraryModel.FK_tbl_Borrow_tbl_User" FromRole="tbl_Borrow" ToRole="tbl_User" />
+        </EntityType>
+        <EntityType Name="tbl_Login">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="QuestionId" Type="Int32" />
+          <Property Name="Answer" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tbl_Question">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Question" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tbl_Register">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Reg" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tbl_Type">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="tbl_Books" Relationship="LibraryModel.FK_tbl_Books_tbl_Type" FromRole="tbl_Type" ToRole="tbl_Books" />
+        </EntityType>
+        <EntityType Name="tbl_User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="FName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Tell" Type="String" MaxLength="11" Unicode="true" FixedLength="false" />
+          <Property Name="Pic" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="tbl_Borrow" Relationship="LibraryModel.FK_tbl_Borrow_tbl_User" FromRole="tbl_User" ToRole="tbl_Borrow" />
+        </EntityType>
+        <Association Name="FK_tbl_Books_tbl_Type">
+          <End Role="tbl_Type" Type="LibraryModel.tbl_Type" Multiplicity="0..1" />
+          <End Role="tbl_Books" Type="LibraryModel.tbl_Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Type">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Books">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Borrow_tbl_Books">
+          <End Role="tbl_Books" Type="LibraryModel.tbl_Books" Multiplicity="0..1" />
+          <End Role="tbl_Borrow" Type="LibraryModel.tbl_Borrow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Books">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Borrow">
+              <PropertyRef Name="BookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Borrow_tbl_User">
+          <End Role="tbl_User" Type="LibraryModel.tbl_User" Multiplicity="0..1" />
+          <End Role="tbl_Borrow" Type="LibraryModel.tbl_Borrow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Borrow">
+              <PropertyRef Name="BorrowerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LibraryModelStoreContainer" CdmEntityContainer="LibraryEntities">
+          <EntitySetMapping Name="tbl_Books">
+            <EntityTypeMapping TypeName="LibraryModel.tbl_Books">
+              <MappingFragment StoreEntitySet="tbl_Books">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Bookname" ColumnName="Bookname" />
+                <ScalarProperty Name="Writer" ColumnName="Writer" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Borrow">
+            <EntityTypeMapping TypeName="LibraryModel.tbl_Borrow">
+              <MappingFragment StoreEntitySet="tbl_Borrow">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+                <ScalarProperty Name="BorrowerId" ColumnName="BorrowerId" />
+                <ScalarProperty Name="BorrowDate" ColumnName="BorrowDate" />
+                <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Login">
+            <EntityTypeMapping TypeName="LibraryModel.tbl_Login">
+              <MappingFragment StoreEntitySet="tbl_Login">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Question">
+            <EntityTypeMapping TypeName="LibraryModel.tbl_Question">
+              <MappingFragment StoreEntitySet="tbl_Question">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Register">
+            <EntityTypeMapping TypeName="LibraryModel.tbl_Register">
+              <MappingFragment StoreEntitySet="tbl_Register">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Reg" ColumnName="Reg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Type">
+            <EntityTypeMapping TypeName="LibraryModel.tbl_Type">
+              <MappingFragment StoreEntitySet="tbl_Type">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_User">
+            <EntityTypeMapping TypeName="LibraryModel.tbl_User">
+              <MappingFragment StoreEntitySet="tbl_User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+                <ScalarProperty Name="Tell" ColumnName="Tell" />
+                <ScalarProperty Name="Pic" ColumnName="Pic" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

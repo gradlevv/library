@@ -1,0 +1,480 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{60FD538A-5348-4DC6-BA60-5B797A7E2E7F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LibManagement</RootNamespace>
+    <AssemblyName>LibManagement</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevComponents.DotNetBar.SuperGrid, Version=11.7.0.0, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar2, Version=11.7.0.0, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevComponents.Instrumentation, Version=11.7.0.0, Culture=neutral, PublicKeyToken=f90dc37c26666a67">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Base, Version=2011.3.1200.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Stimulsoft.Report, Version=2011.3.1200.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Telerik.WinControls, Version=2016.1.112.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.GridView, Version=2016.1.112.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.RadDiagram, Version=2016.1.112.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.Themes.Windows8, Version=2016.1.112.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.UI, Version=2016.1.112.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TelerikCommon, Version=2016.1.112.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Books.cs" />
+    <Compile Include="Books\frmAddBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Books\frmAddBook.designer.cs">
+      <DependentUpon>frmAddBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Books\frmAddType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Books\frmAddType.designer.cs">
+      <DependentUpon>frmAddType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Books\frmBooks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Books\frmBooks.designer.cs">
+      <DependentUpon>frmBooks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Borrow\frmAllBorrow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Borrow\frmAllBorrow.designer.cs">
+      <DependentUpon>frmAllBorrow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Borrow\frmBorrow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Borrow\frmBorrow.designer.cs">
+      <DependentUpon>frmBorrow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="frmBackup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBackup.designer.cs">
+      <DependentUpon>frmBackup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFLogin.designer.cs">
+      <DependentUpon>frmFLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRecovery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRecovery.designer.cs">
+      <DependentUpon>frmRecovery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRestore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRestore.Designer.cs">
+      <DependentUpon>frmRestore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSetting.designer.cs">
+      <DependentUpon>frmSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs" />
+    <Compile Include="Methodes.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="EF\tbl_Books.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\tbl_Borrow.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\tbl_Login.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\tbl_Question.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\tbl_Register.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\tbl_Type.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\tbl_User.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\frmBookReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\frmBookReport.designer.cs">
+      <DependentUpon>frmBookReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\frmBorrowReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\frmBorrowReport.designer.cs">
+      <DependentUpon>frmBorrowReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\frmReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\frmReports.designer.cs">
+      <DependentUpon>frmReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\frmUserReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\frmUserReport.designer.cs">
+      <DependentUpon>frmUserReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs" />
+    <Compile Include="Users\frmAddUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\frmAddUser.designer.cs">
+      <DependentUpon>frmAddUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\frmUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\frmUsers.designer.cs">
+      <DependentUpon>frmUsers.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Books\frmAddBook.resx">
+      <DependentUpon>frmAddBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Books\frmAddType.resx">
+      <DependentUpon>frmAddType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Books\frmBooks.resx">
+      <DependentUpon>frmBooks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Borrow\frmAllBorrow.resx">
+      <DependentUpon>frmAllBorrow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Borrow\frmBorrow.resx">
+      <DependentUpon>frmBorrow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBackup.resx">
+      <DependentUpon>frmBackup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFLogin.resx">
+      <DependentUpon>frmFLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRecovery.resx">
+      <DependentUpon>frmRecovery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRestore.resx">
+      <DependentUpon>frmRestore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSetting.resx">
+      <DependentUpon>frmSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\frmBookReport.resx">
+      <DependentUpon>frmBookReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\frmBorrowReport.resx">
+      <DependentUpon>frmBorrowReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\frmReports.resx">
+      <DependentUpon>frmReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\frmUserReport.resx">
+      <DependentUpon>frmUserReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\frmAddUser.resx">
+      <DependentUpon>frmAddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\frmUsers.resx">
+      <DependentUpon>frmUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="EF\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EF\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </None>
+    <None Include="EF\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
+    <None Include="EF\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Apply.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Default-User.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Add-Male-User_49576.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_bookshelf_1055107.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folder - User.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Finance_financial_report_1889193.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_User_Customers_1218712.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Student-3_379383.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Applications.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Database.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\padlock %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x-button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\padlock %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\del0ete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checked %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notebook %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notebook %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notebook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rotate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Back.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user %289%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user %286%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Print.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\P0rint.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Chart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\team %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bookshelf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\id-card.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\team.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\books.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\contract.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\library %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loupe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database %287%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database %286%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rotate1.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
